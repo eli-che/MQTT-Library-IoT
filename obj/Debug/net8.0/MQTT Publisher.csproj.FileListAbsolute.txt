@@ -15,3 +15,4 @@ C:\Users\elias\Desktop\Studier\MQTT Projekt\MQTT Publisher\obj\Debug\net8.0\ref\
 C:\Users\elias\Desktop\Studier\MQTT Projekt\MQTT Publisher\obj\Debug\net8.0\MQTT Publisher.csproj.AssemblyReference.cache
 C:\Users\elias\Desktop\Studier\MQTT Projekt\MQTT Publisher\bin\Debug\net8.0\MQTTnet.dll
 C:\Users\elias\Desktop\Studier\MQTT Projekt\MQTT Publisher\obj\Debug\net8.0\MQTT Publisher.csproj.CopyComplete
+C:\Users\elias\Desktop\Studier\MQTT Projekt\MQTT Publisher\obj\Debug\net8.0\MQTT Publisher.sourcelink.json

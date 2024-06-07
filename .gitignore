@@ -7,3 +7,6 @@ obj/Debug/net8.0/MQTT Publisher.AssemblyInfo.cs
 /obj
 /.vs
 /obj
+.vs/MQTT Publisher/DesignTimeBuild/.dtbcache.v2
+/.vs
+/obj
