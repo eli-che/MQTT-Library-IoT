@@ -1,0 +1,17 @@
+C:\Users\elias\Desktop\Studier\MQTT Projekt\MQTT Publisher\bin\Debug\net8.0\MQTT Publisher.exe
+C:\Users\elias\Desktop\Studier\MQTT Projekt\MQTT Publisher\bin\Debug\net8.0\MQTT Publisher.deps.json
+C:\Users\elias\Desktop\Studier\MQTT Projekt\MQTT Publisher\bin\Debug\net8.0\MQTT Publisher.runtimeconfig.json
+C:\Users\elias\Desktop\Studier\MQTT Projekt\MQTT Publisher\bin\Debug\net8.0\MQTT Publisher.dll
+C:\Users\elias\Desktop\Studier\MQTT Projekt\MQTT Publisher\bin\Debug\net8.0\MQTT Publisher.pdb
+C:\Users\elias\Desktop\Studier\MQTT Projekt\MQTT Publisher\obj\Debug\net8.0\MQTT Publisher.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\elias\Desktop\Studier\MQTT Projekt\MQTT Publisher\obj\Debug\net8.0\MQTT Publisher.AssemblyInfoInputs.cache
+C:\Users\elias\Desktop\Studier\MQTT Projekt\MQTT Publisher\obj\Debug\net8.0\MQTT Publisher.AssemblyInfo.cs
+C:\Users\elias\Desktop\Studier\MQTT Projekt\MQTT Publisher\obj\Debug\net8.0\MQTT Publisher.csproj.CoreCompileInputs.cache
+C:\Users\elias\Desktop\Studier\MQTT Projekt\MQTT Publisher\obj\Debug\net8.0\MQTT Publisher.dll
+C:\Users\elias\Desktop\Studier\MQTT Projekt\MQTT Publisher\obj\Debug\net8.0\refint\MQTT Publisher.dll
+C:\Users\elias\Desktop\Studier\MQTT Projekt\MQTT Publisher\obj\Debug\net8.0\MQTT Publisher.pdb
+C:\Users\elias\Desktop\Studier\MQTT Projekt\MQTT Publisher\obj\Debug\net8.0\MQTT Publisher.genruntimeconfig.cache
+C:\Users\elias\Desktop\Studier\MQTT Projekt\MQTT Publisher\obj\Debug\net8.0\ref\MQTT Publisher.dll
+C:\Users\elias\Desktop\Studier\MQTT Projekt\MQTT Publisher\obj\Debug\net8.0\MQTT Publisher.csproj.AssemblyReference.cache
+C:\Users\elias\Desktop\Studier\MQTT Projekt\MQTT Publisher\bin\Debug\net8.0\MQTTnet.dll
+C:\Users\elias\Desktop\Studier\MQTT Projekt\MQTT Publisher\obj\Debug\net8.0\MQTT Publisher.csproj.CopyComplete
