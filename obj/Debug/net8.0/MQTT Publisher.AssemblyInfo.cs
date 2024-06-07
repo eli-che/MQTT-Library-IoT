@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MQTT Publisher")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8fdf8855d307b660ae2a574a067373fbe2c3ab0f")]
 [assembly: System.Reflection.AssemblyProductAttribute("MQTT Publisher")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MQTT Publisher")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
