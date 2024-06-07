@@ -10,5 +10,18 @@ namespace MQTT_Publisher
 {
     public class MqttClient
     {
+        private TcpClient _client;
+        private NetworkStream _stream;
+
+        public void Connect(string host, int port)
+        {
+
+        }
+
+        public void Disconnect()
+        {
+
+        }
     }
+
 }
