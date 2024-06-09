@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Net.Sockets;
+using MQTTnet.Packets;
 
 namespace MQTT_Publisher
 {
@@ -73,6 +74,11 @@ namespace MQTT_Publisher
 
             var packetBytes = publishPacket.ToByteArray();
             _stream.Write(packetBytes, 0, packetBytes.Length);
+
+            var response = new byte[4];
+            _stream.Read(response, 0, response.Length);
+            var pubackPacket = new MqttPubackReponsePacket(response);
+            Console.WriteLine($"Received PUBACK with Packet Identifier: {pubackPacket.PacketIdentifier}");
         }
     }
 
