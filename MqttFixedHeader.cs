@@ -14,7 +14,7 @@ namespace MQTT_Publisher
         public int RemainingLength { get; set; }
 
         //Contruct the packet into a byte array to send over network
-        public byte[] toByteArray()
+        public byte[] ToByteArray()
         {
             using (var dataStream = new MemoryStream())
             {

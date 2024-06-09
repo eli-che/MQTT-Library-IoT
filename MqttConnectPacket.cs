@@ -36,7 +36,7 @@ namespace MQTT_Publisher
 
             using (var dataStream = new MemoryStream())
             {
-                var fixedHeaderBytes = FixedHeader.toByteArray();
+                var fixedHeaderBytes = FixedHeader.ToByteArray();
                 dataStream.Write(fixedHeaderBytes, 0, fixedHeaderBytes.Length);
 
                 //Variable Header
@@ -79,7 +79,7 @@ namespace MQTT_Publisher
                 var packetBytes = dataStream.ToArray();
                 FixedHeader.RemainingLength = packetBytes.Length - fixedHeaderBytes.Length; //Subtract the first byte of the fixed header which contains the packet type and flags
                 //Rebuild the fixed header because of the updated remaining length
-                var newFixedHeaderBytes = FixedHeader.toByteArray();
+                var newFixedHeaderBytes = FixedHeader.ToByteArray();
                 //Copy the new fixed header bytes into the packet bytes
                 //Source array, source index, destination array, destination index, length
                 Array.Copy(newFixedHeaderBytes, 0, packetBytes, 0, newFixedHeaderBytes.Length);
