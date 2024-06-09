@@ -29,9 +29,24 @@ namespace MQTT_Publisher
             var packetBytes = connectPacket.ToByteArray();
             _stream.Write(packetBytes, 0, packetBytes.Length);
 
+            //Read the connack reponse
             var response = new byte[4];
             _stream.Read(response, 0, response.Length);
-                }
+            var connackResponse = new MqttConnackReponsePacket(response);
+            if (connackResponse.ConnectReasonCode != 0)
+            {
+                Console.WriteLine($"Connection failed with return code: {connackResponse.ConnectReasonCode}");
+                //Log the flags
+                Console.WriteLine($"Connect Acknowledge Flags: {connackResponse.ConnectAcknowledgeFlags}");
+
+            }
+            else
+            {
+                Console.WriteLine("Connack Succesfully recieved!");
+            }
+
+
+            }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);

@@ -45,7 +45,6 @@ namespace MQTT_Publisher
                 // Write the payload
                 dataStream.Write(Payload, 0, Payload.Length);
 
-                Console.WriteLine("Payload: " + BitConverter.ToString(Payload));
 
                 // Calculate the remaining length
                 int variableHeaderAndPayloadLength = (int)dataStream.Length;
@@ -66,7 +65,6 @@ namespace MQTT_Publisher
 
                     // Write the variable header and payload
                     finalStream.Write(dataStream.ToArray(), 0, variableHeaderAndPayloadLength);
-                    Console.WriteLine("Packet: " + BitConverter.ToString(finalStream.ToArray()));
                     return finalStream.ToArray();
                 }
             }
