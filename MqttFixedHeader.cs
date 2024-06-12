@@ -13,6 +13,8 @@ namespace MQTT_AIO
         public byte Flags { get; set; }
         public int RemainingLength { get; set; }
 
+        public byte QoS => (byte)((Flags >> 1) & 0x03);
+
         //Contruct the packet into a byte array to send over network
         public byte[] ToByteArray()
         {
