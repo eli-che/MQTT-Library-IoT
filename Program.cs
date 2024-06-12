@@ -16,8 +16,11 @@ class Program
         string message = "Hello MQTT!";
         byte[] payload = Encoding.UTF8.GetBytes(message);
 
-        mqttClient.Publish(topic, payload, qos: 1, retain: false, dup: false);
+        mqttClient.Publish(topic, payload, qos: 1, retain: true, dup: false);
         Console.WriteLine($"Published message to {topic}: {message}");
+
+        mqttClient.Subscribe(topic, qos: 1);
+        Console.WriteLine($"Subscribed to {topic}");
         Thread.Sleep(1000);
         mqttClient.Disconnect();
     }
