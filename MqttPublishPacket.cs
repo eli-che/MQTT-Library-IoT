@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MQTTnet.Protocol;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -27,6 +28,50 @@ namespace MQTT_AIO
 
             };
         }
+
+        public MqttPublishPacket(byte[] packet)
+        {
+            using (var dataStream = new MemoryStream(packet))
+            {
+                //Read the fixed header
+                byte firstByte = (byte)dataStream.ReadByte();
+                FixedHeader = new MqttFixedHeader
+                {
+                    PacketType = (mqttControlPacketType)(firstByte >> 4),
+                    Flags = (byte)(firstByte & 0x0F)
+                };
+
+                // Read the remaining length
+                int multiplier = 1; // Multiplier for the position of the byte being processed (1, 128, 16384, etc.)
+                int value = 0; // The decoded remaining length value
+                byte encodedByte; // The current byte being processed
+                do
+                {
+                    encodedByte = (byte)dataStream.ReadByte(); // Read the next byte from the stream
+                    value += (encodedByte & 127) * multiplier; // Extract the 7 LSBs and add to the value
+                    multiplier *= 128; // Increase the multiplier for the next byte
+                } while ((encodedByte & 128) != 0);  // If the MSB is 1, continue reading the next byte
+               
+                FixedHeader.RemainingLength = value;
+
+                //now we read the variable header which is the next byte to be read
+                Topic = ReadString(dataStream);
+
+                //if Fixedheader.Flags has qos level 1 or 2, we need to read the packet identifier
+
+                if (FixedHeader.QoS > 0)
+                {
+                    PacketIdentifier = (ushort)((dataStream.ReadByte() << 8) | dataStream.ReadByte());
+                }
+
+                // Read the payload
+                Payload = new byte[FixedHeader.RemainingLength - dataStream.Position];
+                dataStream.Read(Payload, 0, Payload.Length);
+
+
+            }
+        }
+
         public byte[] ToByteArray()
         {
             using (var dataStream = new MemoryStream())
@@ -76,6 +121,14 @@ namespace MQTT_AIO
             dataStream.WriteByte((byte)(buffer.Length >> 8)); //MSB One byte
             dataStream.WriteByte((byte)buffer.Length); //LSB One byte
             dataStream.Write(buffer, 0, buffer.Length); //Write the bytes of the string
+        }
+
+        private string ReadString(MemoryStream dataStream)
+        {
+            var length = (dataStream.ReadByte() << 8) | dataStream.ReadByte();
+            var buffer = new byte[length];
+            dataStream.Read(buffer, 0, length);
+            return Encoding.UTF8.GetString(buffer);
         }
 
     }
