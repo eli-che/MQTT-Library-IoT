@@ -80,6 +80,23 @@ namespace MQTT_AIO
             var pubackPacket = new MqttPubackReponsePacket(response);
             Console.WriteLine($"Received PUBACK with Packet Identifier: {pubackPacket.PacketIdentifier}");
         }
-    }
 
+        public void Subscribe(string topic, byte qos = 0)
+        {
+            var subscribePacket = new MqttSubscribePacket
+            {
+                Topic = topic,
+                QosLevel = qos,
+                PacketIdentifier = (ushort)new Random().Next(1, 65535)
+            };
+
+            var packetBytes = subscribePacket.ToByteArray();
+            _stream.Write(packetBytes, 0, packetBytes.Length);
+
+            //var response = new byte[4];
+           // _stream.Read(response, 0, response.Length);
+            // var subackPacket = new MqttSubackReponsePacket(response);
+            // Console.WriteLine($"Received SUBACK with Packet Identifier: {subackPacket.PacketIdentifier}");
+        }
+    }
 }
