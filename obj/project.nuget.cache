@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2zmoa/26CXcIrAeS7Wib7qdF7YV9w/pMbzzpguk63bhGAhCHBw7dkRNUKFf00G0Ad8s1BwIKx8avs3o2rqtVTQ==",
+  "dgSpecHash": "5oa0EDnKyf3j0ERK4iQlj0M/teRGM8JIZuPSmVbHLRjvCV8Cmh4IPk+6PVpS/sXOCD/ZSZtl0Sb9MUw5xbzrtQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\elias\\Desktop\\Studier\\MQTT Projekt\\MQTT Publisher\\MQTT Publisher.csproj",
+  "projectFilePath": "C:\\Users\\elias\\Desktop\\Studier\\MQTT Projekt\\MQTT Publisher\\MQTT AIO.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\elias\\.nuget\\packages\\mqttnet\\4.0.0.167\\mqttnet.4.0.0.167.nupkg.sha512"
   ],
@@ -11,7 +11,7 @@
       "code": "NU1603",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "MQTT Publisher depends on MQTTnet (>= 4.0.0) but MQTTnet 4.0.0 was not found. An approximate best match of MQTTnet 4.0.0.167 was resolved.",
+      "message": "MQTT AIO depends on MQTTnet (>= 4.0.0) but MQTTnet 4.0.0 was not found. An approximate best match of MQTTnet 4.0.0.167 was resolved.",
       "libraryId": "MQTTnet",
       "targetGraphs": [
         "net8.0"

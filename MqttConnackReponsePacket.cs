@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace MQTT_Publisher
+namespace MQTT_AIO
 {
     public class MqttConnackReponsePacket
     {

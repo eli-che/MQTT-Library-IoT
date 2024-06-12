@@ -1,4 +1,4 @@
-﻿using MQTT_Publisher;
+﻿using MQTT_AIO;
 using System;
 using System.Text;
 using System.Threading;
@@ -16,7 +16,7 @@ class Program
         string message = "Hello MQTT!";
         byte[] payload = Encoding.UTF8.GetBytes(message);
 
-        mqttClient.Publish(topic, payload, qos: 0, retain: false, dup: false);
+        mqttClient.Publish(topic, payload, qos: 1, retain: false, dup: false);
         Console.WriteLine($"Published message to {topic}: {message}");
         Thread.Sleep(1000);
         mqttClient.Disconnect();

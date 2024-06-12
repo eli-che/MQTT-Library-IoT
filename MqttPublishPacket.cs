@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MQTT_Publisher
+namespace MQTT_AIO
 {
     public class MqttPublishPacket
     {

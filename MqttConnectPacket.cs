@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Text;
 
-namespace MQTT_Publisher
+namespace MQTT_AIO
 {
     public class MqttConnectPacket
     {

@@ -7,7 +7,7 @@ using System.IO;
 using System.Net.Sockets;
 using MQTTnet.Packets;
 
-namespace MQTT_Publisher
+namespace MQTT_AIO
 {
     public class MqttClient
     {
