@@ -33,7 +33,7 @@ namespace MQTT_AIO
         {
             using (var dataStream = new MemoryStream(packet))
             {
-                //Read the fixed header
+                // Read the fixed header
                 byte firstByte = (byte)dataStream.ReadByte();
                 FixedHeader = new MqttFixedHeader
                 {
@@ -42,33 +42,51 @@ namespace MQTT_AIO
                 };
 
                 // Read the remaining length
-                int multiplier = 1; // Multiplier for the position of the byte being processed (1, 128, 16384, etc.)
-                int value = 0; // The decoded remaining length value
-                byte encodedByte; // The current byte being processed
+                int multiplier = 1;
+                int value = 0;
+                byte encodedByte;
                 do
                 {
-                    encodedByte = (byte)dataStream.ReadByte(); // Read the next byte from the stream
-                    value += (encodedByte & 127) * multiplier; // Extract the 7 LSBs and add to the value
-                    multiplier *= 128; // Increase the multiplier for the next byte
-                } while ((encodedByte & 128) != 0);  // If the MSB is 1, continue reading the next byte
-               
+                    encodedByte = (byte)dataStream.ReadByte();
+                    value += (encodedByte & 127) * multiplier;
+                    multiplier *= 128;
+
+                    if (multiplier > 128 * 128 * 128 || value > 268435455)
+                    {
+                        throw new OverflowException("Remaining length calculation overflowed");
+                    }
+                } while ((encodedByte & 128) != 0);
+
                 FixedHeader.RemainingLength = value;
 
-                //now we read the variable header which is the next byte to be read
+                Console.WriteLine($"FixedHeader.RemainingLength: {FixedHeader.RemainingLength}");
+
+                // Read the variable header (Topic Name)
                 Topic = ReadString(dataStream);
+                Console.WriteLine($"Topic: {Topic}");
 
-                //if Fixedheader.Flags has qos level 1 or 2, we need to read the packet identifier
-
+                // Read Packet Identifier if QoS > 0
                 if (FixedHeader.QoS > 0)
                 {
                     PacketIdentifier = (ushort)((dataStream.ReadByte() << 8) | dataStream.ReadByte());
+                    Console.WriteLine($"PacketIdentifier: {PacketIdentifier}");
                 }
 
-                // Read the payload
-                Payload = new byte[FixedHeader.RemainingLength - dataStream.Position];
-                dataStream.Read(Payload, 0, Payload.Length);
+                // Calculate payload length
+                int variableHeaderLength = (int)dataStream.Position;
+                int payloadLength = FixedHeader.RemainingLength - (variableHeaderLength - 2); // Adjust for the two bytes length of the topic string
 
+                Console.WriteLine($"VariableHeaderLength: {variableHeaderLength}, PayloadLength: {payloadLength}");
 
+                // Validate payload length
+                if (payloadLength < 0 || payloadLength > dataStream.Length - dataStream.Position)
+                {
+                    throw new InvalidDataException("Invalid payload length");
+                }
+
+                Payload = new byte[payloadLength];
+                int bytesRead = dataStream.Read(Payload, 0, Payload.Length);
+                Console.WriteLine($"Payload.Length: {Payload.Length}, BytesRead: {bytesRead}");
             }
         }
 
